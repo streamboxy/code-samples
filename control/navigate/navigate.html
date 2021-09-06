@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Streamboxy Code Samples</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+    <h1>Navigate to Session</h1>
+    <div>
+        <button onclick="navigate('982c46a0-d487-4ce7-b669-3bd3f88c09a0')">Navigate to Session with Id '982c46a0-d487-4ce7-b669-3bd3f88c09a0'</button>
+    </div>
+
+    <script>
+        function navigate(targetSessionId) {
+            const navigateToSessionEvent = {
+                type: 5,
+                data: {
+                    command: 0,
+                    args: [targetSessionId]
+                }
+            };
+            
+            var coreURL = getOrigin();
+            window.parent.postMessage(navigateToSessionEvent, coreURL);
+        }
+
+        // Provide the currently used Streamboxy Stage URL origin, if a custom domain is used, use the custom domains URL origin
+        // Streamboxy Core attaches the calling CoreURL (e.g. https://stage.streamboxy.com) as search param to your provided URL
+        function getOrigin() {
+            var params = (new URL(document.location)).searchParams;
+            var encodedOrigin = params.get('origin');
+            var origin = decodeURIComponent(encodedOrigin);
+
+            return origin;
+        }
+    </script>
+</body>
+
+</html>

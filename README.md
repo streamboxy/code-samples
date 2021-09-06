@@ -8,5 +8,6 @@ Content Pages are used to load addtional HTML content into the core platform. Yo
 TBD
 
 ### Control Core Platform
+You can control specific aspects of the platform through your own code.
 #### Navigating to a specific session
-TBD
+To navigate to a session within an event, please refer to our [navigate code sample](https://github.com/streamboxy/code-samples/blob/main/control/navigate/navigate.html).
